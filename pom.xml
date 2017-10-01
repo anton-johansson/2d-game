@@ -31,7 +31,7 @@
     </developers>
 
     <issueManagement>
-        <url>https://github.com/anton-johansson/???/issues</url>
+        <url>https://github.com/anton-johansson/2d-game/issues</url>
         <system>GitHub Issues</system>
     </issueManagement>
 
@@ -45,8 +45,8 @@
 
     <scm>
         <url>https://github.com/anton-johansson/???</url>
-        <connection>scm:git:git@github.com:anton-johansson/???.git</connection>
-        <developerConnection>scm:git:git@github.com:anton-johansson/???.git</developerConnection>
+        <connection>scm:git:git@github.com:anton-johansson/2d-game.git</connection>
+        <developerConnection>scm:git:git@github.com:anton-johansson/2d-game.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -78,12 +78,11 @@
             <artifactId>lwjgl-opengl</artifactId>
             <version>${lwjgl.version}</version>
         </dependency>
-        <!-- 
         <dependency>
             <groupId>org.lwjgl</groupId>
             <artifactId>lwjgl-stb</artifactId>
             <version>${lwjgl.version}</version>
-        </dependency> -->
+        </dependency>
         <dependency>
             <groupId>org.lwjgl</groupId>
             <artifactId>lwjgl</artifactId>
@@ -120,14 +119,13 @@
             <classifier>${lwjgl.natives}</classifier>
             <scope>runtime</scope>
         </dependency>
-        <!-- 
         <dependency>
             <groupId>org.lwjgl</groupId>
             <artifactId>lwjgl-stb</artifactId>
             <version>${lwjgl.version}</version>
             <classifier>${lwjgl.natives}</classifier>
             <scope>runtime</scope>
-        </dependency> -->
+        </dependency>
     </dependencies>
 
     <profiles>

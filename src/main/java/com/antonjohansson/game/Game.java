@@ -11,8 +11,10 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.system.MemoryStack;
 import org.lwjgl.system.MemoryUtil;
 
+import com.antonjohansson.game.asset.AssetManager;
 import com.antonjohansson.game.config.Configuration;
 import com.antonjohansson.game.time.GameTime;
+import com.antonjohansson.game.world.World;
 
 /**
  * Defines the game.
@@ -21,12 +23,16 @@ public class Game
 {
     private final Configuration configuration;
     private final GameTime gameTime;
+    private final AssetManager resourceManager;
+    private final World world;
     private long window;
 
     public Game(Configuration configuration)
     {
         this.configuration = configuration;
         this.gameTime = new GameTime(configuration);
+        this.resourceManager = new AssetManager();
+        this.world = new World();
     }
 
     /**
@@ -88,17 +94,26 @@ public class Game
     private void loop()
     {
         GL.createCapabilities();
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
+        resourceManager.initialize();
+        world.initialize(resourceManager);
         gameTime.initialize();
 
         while (!GLFW.glfwWindowShouldClose(window))
         {
-            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-            GLFW.glfwSwapBuffers(window);
             GLFW.glfwPollEvents();
+            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
             gameTime.update();
+            world.update(gameTime);
+            world.render();
             gameTime.restrainIfNecessary();
+
+            GLFW.glfwSwapBuffers(window);
         }
+
+        world.dispose();
+        GLFW.glfwTerminate();
     }
 }
