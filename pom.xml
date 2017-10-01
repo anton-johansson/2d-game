@@ -11,8 +11,8 @@
     <artifactId>2d-game</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Anton Johansson :: 2D Game</name>
-    <description>Parent for all of ${project.organization.name}'s Java projects.</description>
-    <url>https://github.com/viskan/parent</url>
+    <description>A simple 2D game.</description>
+    <url>https://github.com/anton-johansson/2d-game</url>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
