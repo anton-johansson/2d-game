@@ -2,6 +2,8 @@ package com.antonjohansson.game.asset;
 
 import org.lwjgl.opengl.GL11;
 
+import com.antonjohansson.game.asset.common.IAsset;
+
 /**
  * Defines a texture that can be rendered.
  */

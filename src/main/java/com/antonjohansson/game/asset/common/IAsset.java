@@ -1,4 +1,4 @@
-package com.antonjohansson.game.asset;
+package com.antonjohansson.game.asset.common;
 
 /**
  * Defines an asset.

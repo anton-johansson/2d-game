@@ -13,7 +13,7 @@ import org.lwjgl.system.MemoryStack;
 /**
  * Loads {@link Texture textures}.
  */
-class TextureLoader implements IAssetLoader<Texture>
+class TextureLoader implements IAssetLoader<Texture, String>
 {
     private static final int CHANNELS = 4;
 
@@ -23,6 +23,12 @@ class TextureLoader implements IAssetLoader<Texture>
     public void setAssetLocation(String assetLocation)
     {
         this.textureLocation = assetLocation + "textures/";
+    }
+
+    @Override
+    public Class<String> getIdentifierType()
+    {
+        return String.class;
     }
 
     @Override

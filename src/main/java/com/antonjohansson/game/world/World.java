@@ -4,6 +4,8 @@ import org.lwjgl.opengl.GL11;
 
 import com.antonjohansson.game.asset.AssetManager;
 import com.antonjohansson.game.asset.Texture;
+import com.antonjohansson.game.asset.map.MapPart;
+import com.antonjohansson.game.asset.map.MapPartIdentifier;
 import com.antonjohansson.game.time.GameTime;
 
 /**
@@ -12,6 +14,7 @@ import com.antonjohansson.game.time.GameTime;
 public class World
 {
     private Texture tileset01;
+    private MapPart mapPart;
 
     /**
      * Initializes the world.
@@ -21,6 +24,7 @@ public class World
     public void initialize(AssetManager assetManager)
     {
         tileset01 = assetManager.getAsset(Texture.class, "tileset01.png");
+        mapPart = assetManager.getAsset(MapPart.class, MapPartIdentifier.of(50, -50));
     }
 
     /**
@@ -29,6 +33,7 @@ public class World
     public void dispose()
     {
         tileset01.dispose();
+        mapPart.dispose();
     }
 
     /**
