@@ -60,12 +60,18 @@ class TextureLoader implements IAssetLoader<Texture, String>
             GL11.glTexParameterf(GL11.GL_TEXTURE_2D, GL11.GL_TEXTURE_MAG_FILTER, GL11.GL_NEAREST);
             GL11.glTexImage2D(GL11.GL_TEXTURE_2D, 0, GL11.GL_RGBA, width, height, 0, GL11.GL_RGBA, GL11.GL_UNSIGNED_BYTE, data);
 
-            Texture texture = new Texture(identifier, width, height);
+            Texture texture = new Texture(name, identifier, width, height);
             return texture;
         }
         catch (IOException e)
         {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void dispose(Texture asset)
+    {
+        GL11.glDeleteTextures(asset.getGraphicsIdentifier());
     }
 }

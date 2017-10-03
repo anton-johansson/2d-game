@@ -1,8 +1,5 @@
 package com.antonjohansson.game.asset.map;
 
-import static com.antonjohansson.game.asset.map.MapConstants.HORIZONTAL_TILES_PER_PART;
-import static com.antonjohansson.game.asset.map.MapConstants.VERTICAL_TILES_PER_PART;
-
 import com.antonjohansson.game.asset.common.IAsset;
 
 /**
@@ -10,16 +7,19 @@ import com.antonjohansson.game.asset.common.IAsset;
  */
 public class MapPart implements IAsset
 {
-    private MapTile[][] tiles = new MapTile[HORIZONTAL_TILES_PER_PART][VERTICAL_TILES_PER_PART];
+    private final MapPartIdentifier identifier;
+    private final MapTile[][] tiles;
 
-    public MapPart(MapTile[][] tiles)
+    MapPart(MapPartIdentifier identifier, MapTile[][] tiles)
     {
+        this.identifier = identifier;
         this.tiles = tiles;
     }
 
     @Override
-    public void dispose()
+    public MapPartIdentifier getIdentifier()
     {
+        return identifier;
     }
 
     /**

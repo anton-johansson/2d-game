@@ -9,20 +9,22 @@ import com.antonjohansson.game.asset.common.IAsset;
  */
 public class Texture implements IAsset
 {
-    private final int identifier;
+    private final String name;
+    private final int graphicsIdentifier;
     private final int width;
     private final int height;
 
-    Texture(int identifier, int width, int height)
+    Texture(String name, int graphicsIdentifier, int width, int height)
     {
-        this.identifier = identifier;
+        this.name = name;
+        this.graphicsIdentifier = graphicsIdentifier;
         this.width = width;
         this.height = height;
     }
 
-    public int getIdentifier()
+    int getGraphicsIdentifier()
     {
-        return identifier;
+        return graphicsIdentifier;
     }
 
     public int getWidth()
@@ -35,17 +37,17 @@ public class Texture implements IAsset
         return height;
     }
 
+    @Override
+    public String getIdentifier()
+    {
+        return name;
+    }
+
     /**
      * Binds the texture to the graphics renderer.
      */
     public void bind()
     {
-        GL11.glBindTexture(GL11.GL_TEXTURE_2D, identifier);
-    }
-
-    @Override
-    public void dispose()
-    {
-        GL11.glDeleteTextures(identifier);
+        GL11.glBindTexture(GL11.GL_TEXTURE_2D, graphicsIdentifier);
     }
 }

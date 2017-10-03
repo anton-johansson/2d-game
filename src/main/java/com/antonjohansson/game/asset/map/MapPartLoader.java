@@ -68,11 +68,16 @@ public class MapPartLoader implements IAssetLoader<MapPart, MapPartIdentifier>
                     tiles[x][y] = tile;
                 }
             }
-            return new MapPart(tiles);
+            return new MapPart(identifier, tiles);
         }
         catch (Exception e)
         {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void dispose(MapPart asset)
+    {
     }
 }

@@ -1,5 +1,7 @@
 package com.antonjohansson.game.asset.map;
 
+import java.util.Objects;
+
 /**
  * Defines an identifier for loading {@link MapPart map parts}.
  */
@@ -34,5 +36,28 @@ public class MapPartIdentifier
     public int getY()
     {
         return y;
+    }
+
+    @Override
+    public int hashCode()
+    {
+        return Objects.hash(x, y);
+    }
+
+    @Override
+    public boolean equals(Object obj)
+    {
+        if (obj == null || obj.getClass() != getClass())
+        {
+            return false;
+        }
+        if (obj == this)
+        {
+            return true;
+        }
+
+        MapPartIdentifier that = (MapPartIdentifier) obj;
+        return this.x == that.x
+            && this.y == that.y;
     }
 }

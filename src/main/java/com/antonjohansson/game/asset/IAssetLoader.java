@@ -25,10 +25,17 @@ public interface IAssetLoader<A extends IAsset, I>
     Class<I> getIdentifierType();
 
     /**
-     * Loads an asset by its name.
+     * Loads an asset by its identifier.
      *
      * @param identifier The identifier of the asset.
      * @return Returns the asset.
      */
     A load(I identifier);
+
+    /**
+     * Disposes the asset.
+     *
+     * @param asset The asset to dispose of.
+     */
+    void dispose(A asset);
 }

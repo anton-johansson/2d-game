@@ -6,7 +6,9 @@ package com.antonjohansson.game.asset.common;
 public interface IAsset
 {
     /**
-     * Disposes the asset.
+     * Gets the identifier of this asset.
+     *
+     * @return Returns the identifier.
      */
-    void dispose();
+    Object getIdentifier();
 }

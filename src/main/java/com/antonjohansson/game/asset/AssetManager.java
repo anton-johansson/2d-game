@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import com.antonjohansson.game.asset.common.IAsset;
 import com.antonjohansson.game.asset.map.MapPart;
@@ -18,9 +19,10 @@ import com.antonjohansson.game.asset.map.raw.MapDataTile;
 /**
  * Default implementation of {@link IAssetManager}.
  */
-public class AssetManager implements IAssetManager
+public class AssetManager implements IAssetManagerController
 {
     private final Map<Class<? extends IAsset>, IAssetLoader<? extends IAsset, ?>> loaders = new HashMap<>();
+    private final Map<Class<?>, Map<Object, AssetHolder<? extends IAsset>>> storages = new HashMap<>();
 
     public AssetManager()
     {
@@ -38,7 +40,22 @@ public class AssetManager implements IAssetManager
         }
         loaders.values().forEach(loader -> loader.setAssetLocation(assetLocation));
 
-//        dummy(assetLocation);
+        //        dummy(assetLocation);
+    }
+
+    @Override
+    public void dispose()
+    {
+        for (Entry<Class<?>, Map<Object, AssetHolder<?>>> entry : storages.entrySet())
+        {
+            Map<Object, AssetHolder<?>> storage = entry.getValue();
+            if (!storage.isEmpty())
+            {
+                Class<?> assetType = entry.getKey();
+                System.err.println("There are " + storage.size() + " assets of type '" + assetType.getSimpleName() + "' that are still subscribed to!");
+            }
+        }
+        storages.clear();
     }
 
     @SuppressWarnings("unused")
@@ -85,14 +102,43 @@ public class AssetManager implements IAssetManager
     }
 
     @Override
-    public <A extends IAsset> A getAsset(Class<A> type, Object identifier)
+    public <A extends IAsset> A subscribe(Class<A> type, Object identifier)
     {
+        AssetHolder<A> holder = holder(type, identifier, true);
+        if (holder != null)
+        {
+            return holder.getAsset();
+        }
         IAssetLoader<A, Object> loader = loader(type);
         if (identifier.getClass() != loader.getIdentifierType())
         {
             throw new RuntimeException("Cannot load assets of type '" + type.getSimpleName() + "' cannot be loaded using a '" + identifier.getClass().getSimpleName() + "'");
         }
-        return loader.load(identifier);
+        A asset = loader.load(identifier);
+        holder = new AssetHolder<>(asset);
+        holder.subscribe();
+        Map<Object, AssetHolder<? extends IAsset>> storage = storages.get(type);
+        storage.put(identifier, holder);
+        return asset;
+    }
+
+    @Override
+    public <A extends IAsset> void unsubscribe(Class<A> type, Object identifier)
+    {
+        AssetHolder<A> holder = holder(type, identifier, false);
+        if (holder == null)
+        {
+            throw new IllegalStateException("No asset was found for type '" + type.getSimpleName() + "' and identifier '" + identifier
+                + "'. You are either unsubscribing from an asset that has never been subscribed to, or has already been unsubscribed from enough.");
+        }
+        holder.unsubscribe();
+        if (!holder.isSubscribedTo())
+        {
+            IAssetLoader<A, Object> loader = loader(type);
+            loader.dispose(holder.getAsset());
+            Map<?, ?> storage = storages.get(type);
+            storage.remove(identifier);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -100,5 +146,19 @@ public class AssetManager implements IAssetManager
     {
         IAssetLoader<A, Object> loader = (IAssetLoader<A, Object>) loaders.get(type);
         return loader;
+    }
+
+    @SuppressWarnings("unchecked")
+    private <A extends IAsset> AssetHolder<A> holder(Class<A> type, Object identifier, boolean createStorageIfAbsent)
+    {
+        Map<Object, AssetHolder<? extends IAsset>> storage = createStorageIfAbsent
+                ? storages.computeIfAbsent(type, t -> new HashMap<>())
+                : storages.get(type);
+
+        if (storage == null)
+        {
+            throw new IllegalStateException("No storage was found for type '" + type.getSimpleName() + ". Are you unsubscribing from an asset type that has never been loaded?");
+        }
+        return (AssetHolder<A>) storage.get(identifier);
     }
 }

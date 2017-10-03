@@ -1,5 +1,7 @@
 package com.antonjohansson.game.asset;
 
+import static java.util.Objects.requireNonNull;
+
 import com.antonjohansson.game.asset.common.IAsset;
 
 /**
@@ -8,16 +10,31 @@ import com.antonjohansson.game.asset.common.IAsset;
 public interface IAssetManager
 {
     /**
-     * Initializes the asset manager.
+     * Subscribes to an asset of a given type and a given identifier. If the asset is not loaded, it will be loaded.
+     *
+     * @param type The type of the asset to subscribe to.
+     * @param identifier The identifier of the asset to subscribe to.
+     * @return Returns the subscribed asset..
      */
-    void initialize();
+    <A extends IAsset> A subscribe(Class<A> type, Object identifier);
 
     /**
-     * Gets an asset of a given type by its name.
+     * Unsubscribes from a given asset, causing it to be disposed of if no other service is subscribing to it.
      *
-     * @param type The type of the asset.
-     * @param identifier The identifier of the asset.
-     * @return Returns the loaded asset.
+     * @param type The type of the asset to unsubscribe from.
+     * @param identifier The identifier of the asset to unsubscribe from.
      */
-    <R extends IAsset> R getAsset(Class<R> type, Object identifier);
+    <A extends IAsset> void unsubscribe(Class<A> type, Object identifier);
+
+    /**
+     * Unsubscribes from a given asset, causing it to be disposed of if no other service is subscribing to it.
+     *
+     * @param asset The asset to unsubscribe from.
+     */
+    default <A extends IAsset> void unsubscribe(A asset)
+    {
+        Class<? extends IAsset> type = requireNonNull(asset, "The asset cannot be null").getClass();
+        Object identifier = asset.getIdentifier();
+        unsubscribe(type, identifier);
+    }
 }
