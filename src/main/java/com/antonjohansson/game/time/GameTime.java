@@ -9,9 +9,9 @@ import com.antonjohansson.game.config.Configuration;
  */
 public class GameTime
 {
-    private static final float NANO_TO_SECONDS_DIVIDER = 1_000_000_000;
-    private static final float NANO_TO_MILLISECONDS_DIVIDER = 1_000_000;
-    private static final int ONE_SECOND_IN_MILLISECONDS = 1_000;
+    private static final int SECOND_IN_MILLISECONDS = 1_000;
+    private static final int SECOND_IN_NANOSECONDS = 1_000_000_000;
+    private static final int MILLISECOND_IN_NANOSECONDS = 1_000_000;
 
     private final Configuration configuration;
     private long lastUpdate;
@@ -45,7 +45,7 @@ public class GameTime
     {
         long newUpdate = time();
 
-        delta = (newUpdate - lastUpdate) / NANO_TO_SECONDS_DIVIDER;
+        delta = (newUpdate - lastUpdate) / (float) SECOND_IN_NANOSECONDS;
 
         updatesPerSecondTime += delta;
         if (updatesPerSecondTime >= 1.0F)
@@ -78,8 +78,8 @@ public class GameTime
         {
             float secondsPerFrame = 1.0F / frameCap().getAsInt();
 
-            long estimatedTimeAfterFrame = (long) (lastUpdate / NANO_TO_MILLISECONDS_DIVIDER) + (long) (secondsPerFrame * ONE_SECOND_IN_MILLISECONDS);
-            long now = (long) (time() / NANO_TO_MILLISECONDS_DIVIDER);
+            long estimatedTimeAfterFrame = (long) (lastUpdate / (float) MILLISECOND_IN_NANOSECONDS) + (long) (secondsPerFrame * SECOND_IN_MILLISECONDS);
+            long now = (long) (time() / (float) MILLISECOND_IN_NANOSECONDS);
             long millisecondsToSleep = estimatedTimeAfterFrame - now;
 
             if (millisecondsToSleep > 0)
