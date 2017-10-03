@@ -7,7 +7,7 @@ import com.antonjohansson.game.config.Configuration;
 /**
  * Controls the game time.
  */
-public class GameTime
+public class GameTime implements IGameTime
 {
     private static final int SECOND_IN_MILLISECONDS = 1_000;
     private static final int SECOND_IN_NANOSECONDS = 1_000_000_000;
@@ -105,11 +105,13 @@ public class GameTime
         return configuration.getGraphics().getFrameCap();
     }
 
+    @Override
     public float getDelta()
     {
         return delta;
     }
 
+    @Override
     public int getUpdatesPerSecond()
     {
         return updatesPerSecond;

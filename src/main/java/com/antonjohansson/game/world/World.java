@@ -6,7 +6,7 @@ import com.antonjohansson.game.asset.IAssetManager;
 import com.antonjohansson.game.asset.Texture;
 import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartIdentifier;
-import com.antonjohansson.game.time.GameTime;
+import com.antonjohansson.game.time.IGameTime;
 
 /**
  * Represents the world.
@@ -43,7 +43,7 @@ public class World
      *
      * @param gameTime The current game time.
      */
-    public void update(GameTime gameTime)
+    public void update(IGameTime gameTime)
     {
     }
 
