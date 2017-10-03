@@ -100,6 +100,10 @@ public class Game
         world.initialize(resourceManager);
         gameTime.initialize();
 
+        GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glLoadIdentity();
+        GL11.glOrtho(0, configuration.getGraphics().getWidth(), 0, configuration.getGraphics().getHeight(), 1, -1);
+
         while (!GLFW.glfwWindowShouldClose(window))
         {
             GLFW.glfwPollEvents();
