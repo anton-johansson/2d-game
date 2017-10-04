@@ -3,9 +3,9 @@ package com.antonjohansson.game.world;
 import org.lwjgl.opengl.GL11;
 
 import com.antonjohansson.game.asset.IAssetManager;
-import com.antonjohansson.game.asset.Texture;
 import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartIdentifier;
+import com.antonjohansson.game.asset.map.TileSet;
 import com.antonjohansson.game.time.IGameTime;
 
 /**
@@ -13,7 +13,7 @@ import com.antonjohansson.game.time.IGameTime;
  */
 public class World
 {
-    private Texture tileset01;
+    private TileSet tileset;
     private MapPart mapPart;
 
     /**
@@ -23,7 +23,7 @@ public class World
      */
     public void initialize(IAssetManager assetManager)
     {
-        tileset01 = assetManager.subscribe(Texture.class, "tileset01.png");
+        tileset = assetManager.subscribe(TileSet.class, 1);
         mapPart = assetManager.subscribe(MapPart.class, MapPartIdentifier.of(50, -50));
     }
 
@@ -34,7 +34,7 @@ public class World
      */
     public void dispose(IAssetManager assetManager)
     {
-        assetManager.unsubscribe(tileset01);
+        assetManager.unsubscribe(tileset);
         assetManager.unsubscribe(mapPart);
     }
 
@@ -52,7 +52,7 @@ public class World
      */
     public void render()
     {
-        tileset01.bind();
+        tileset.getTexture().bind();
 
         GL11.glBegin(GL11.GL_QUADS);
         GL11.glTexCoord2f(0.0F, 1.0F);

@@ -1,4 +1,4 @@
-package com.antonjohansson.game.asset;
+package com.antonjohansson.game.asset.texture;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -10,10 +10,13 @@ import org.lwjgl.opengl.GL13;
 import org.lwjgl.stb.STBImage;
 import org.lwjgl.system.MemoryStack;
 
+import com.antonjohansson.game.asset.IAssetLoader;
+import com.antonjohansson.game.asset.IAssetManager;
+
 /**
  * Loads {@link Texture textures}.
  */
-class TextureLoader implements IAssetLoader<Texture, String>
+public class TextureLoader implements IAssetLoader<Texture, String>
 {
     private static final int CHANNELS = 4;
 
@@ -32,7 +35,7 @@ class TextureLoader implements IAssetLoader<Texture, String>
     }
 
     @Override
-    public Texture load(String name)
+    public Texture load(String name, IAssetManager manager)
     {
         try (MemoryStack stack = MemoryStack.stackPush(); InputStream stream = TextureLoader.class.getResourceAsStream("/textures/" + name))
         {
@@ -70,7 +73,7 @@ class TextureLoader implements IAssetLoader<Texture, String>
     }
 
     @Override
-    public void dispose(Texture asset)
+    public void dispose(Texture asset, IAssetManager manager)
     {
         GL11.glDeleteTextures(asset.getGraphicsIdentifier());
     }

@@ -13,8 +13,12 @@ import java.util.Map.Entry;
 import com.antonjohansson.game.asset.common.IAsset;
 import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartLoader;
+import com.antonjohansson.game.asset.map.TileSet;
+import com.antonjohansson.game.asset.map.TilesetLoader;
 import com.antonjohansson.game.asset.map.raw.MapData;
 import com.antonjohansson.game.asset.map.raw.MapDataTile;
+import com.antonjohansson.game.asset.texture.Texture;
+import com.antonjohansson.game.asset.texture.TextureLoader;
 
 /**
  * Default implementation of {@link IAssetManager}.
@@ -28,6 +32,7 @@ public class AssetManager implements IAssetManagerController
     {
         loaders.put(MapPart.class, new MapPartLoader());
         loaders.put(Texture.class, new TextureLoader());
+        loaders.put(TileSet.class, new TilesetLoader());
     }
 
     @Override
@@ -40,7 +45,7 @@ public class AssetManager implements IAssetManagerController
         }
         loaders.values().forEach(loader -> loader.setAssetLocation(assetLocation));
 
-        //        dummy(assetLocation);
+        //dummy(assetLocation);
     }
 
     @Override
@@ -52,7 +57,7 @@ public class AssetManager implements IAssetManagerController
             if (!storage.isEmpty())
             {
                 Class<?> assetType = entry.getKey();
-                System.err.println("There are " + storage.size() + " assets of type '" + assetType.getSimpleName() + "' that are still subscribed to!");
+                System.err.println("There are " + storage.size() + " asset(s) of type '" + assetType.getSimpleName() + "' that are still subscribed to!");
             }
         }
         storages.clear();
@@ -67,7 +72,7 @@ public class AssetManager implements IAssetManagerController
             for (int y = 0; y < VERTICAL_TILES_PER_PART; y++)
             {
                 MapDataTile tile = new MapDataTile();
-                tile.setTilesetId(x);
+                tile.setTilesetId(1);
                 tile.setTileId(y);
                 tiles[x][y] = tile;
             }
@@ -107,6 +112,7 @@ public class AssetManager implements IAssetManagerController
         AssetHolder<A> holder = holder(type, identifier, true);
         if (holder != null)
         {
+            holder.subscribe();
             return holder.getAsset();
         }
         IAssetLoader<A, Object> loader = loader(type);
@@ -114,7 +120,7 @@ public class AssetManager implements IAssetManagerController
         {
             throw new RuntimeException("Cannot load assets of type '" + type.getSimpleName() + "' cannot be loaded using a '" + identifier.getClass().getSimpleName() + "'");
         }
-        A asset = loader.load(identifier);
+        A asset = loader.load(identifier, this);
         holder = new AssetHolder<>(asset);
         holder.subscribe();
         Map<Object, AssetHolder<? extends IAsset>> storage = storages.get(type);
@@ -135,7 +141,7 @@ public class AssetManager implements IAssetManagerController
         if (!holder.isSubscribedTo())
         {
             IAssetLoader<A, Object> loader = loader(type);
-            loader.dispose(holder.getAsset());
+            loader.dispose(holder.getAsset(), this);
             Map<?, ?> storage = storages.get(type);
             storage.remove(identifier);
         }
@@ -152,8 +158,8 @@ public class AssetManager implements IAssetManagerController
     private <A extends IAsset> AssetHolder<A> holder(Class<A> type, Object identifier, boolean createStorageIfAbsent)
     {
         Map<Object, AssetHolder<? extends IAsset>> storage = createStorageIfAbsent
-                ? storages.computeIfAbsent(type, t -> new HashMap<>())
-                : storages.get(type);
+            ? storages.computeIfAbsent(type, t -> new HashMap<>())
+            : storages.get(type);
 
         if (storage == null)
         {

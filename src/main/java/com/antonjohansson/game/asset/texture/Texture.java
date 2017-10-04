@@ -1,4 +1,4 @@
-package com.antonjohansson.game.asset;
+package com.antonjohansson.game.asset.texture;
 
 import org.lwjgl.opengl.GL11;
 

@@ -9,6 +9,7 @@ import java.io.Reader;
 import java.text.DecimalFormat;
 
 import com.antonjohansson.game.asset.IAssetLoader;
+import com.antonjohansson.game.asset.IAssetManager;
 import com.antonjohansson.game.asset.map.raw.MapData;
 import com.antonjohansson.game.asset.map.raw.MapDataTile;
 import com.google.gson.Gson;
@@ -47,7 +48,7 @@ public class MapPartLoader implements IAssetLoader<MapPart, MapPartIdentifier>
     }
 
     @Override
-    public MapPart load(MapPartIdentifier identifier)
+    public MapPart load(MapPartIdentifier identifier, IAssetManager manager)
     {
         String fileName = FORMAT.format(identifier.getX()) + "." + FORMAT.format(identifier.getY()) + ".map";
 
@@ -64,7 +65,9 @@ public class MapPartLoader implements IAssetLoader<MapPart, MapPartIdentifier>
                     MapDataTile tileData = data.getTiles()[x][y];
                     int tilesetId = tileData.getTilesetId();
                     int tileId = tileData.getTileId();
-                    MapTile tile = new MapTile(tilesetId, tileId);
+
+                    TileSet tileset = manager.subscribe(TileSet.class, tilesetId);
+                    MapTile tile = new MapTile(tileset, tileId);
                     tiles[x][y] = tile;
                 }
             }
@@ -77,7 +80,15 @@ public class MapPartLoader implements IAssetLoader<MapPart, MapPartIdentifier>
     }
 
     @Override
-    public void dispose(MapPart asset)
+    public void dispose(MapPart asset, IAssetManager manager)
     {
+        for (int y = 0; y < VERTICAL_TILES_PER_PART; y++)
+        {
+            for (int x = 0; x < HORIZONTAL_TILES_PER_PART; x++)
+            {
+                MapTile tile = asset.getTile(x, y);
+                manager.unsubscribe(tile.getTileset());
+            }
+        }
     }
 }

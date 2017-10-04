@@ -28,14 +28,16 @@ public interface IAssetLoader<A extends IAsset, I>
      * Loads an asset by its identifier.
      *
      * @param identifier The identifier of the asset.
+     * @param manager The asset manager itself, used for subscribing to sub-assets.
      * @return Returns the asset.
      */
-    A load(I identifier);
+    A load(I identifier, IAssetManager manager);
 
     /**
      * Disposes the asset.
      *
      * @param asset The asset to dispose of.
+     * @param manager The asset manager itself, used for unsubscribing from sub-assets.
      */
-    void dispose(A asset);
+    void dispose(A asset, IAssetManager manager);
 }

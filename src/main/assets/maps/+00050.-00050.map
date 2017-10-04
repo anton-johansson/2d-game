@@ -2,67 +2,133 @@
   "tiles": [
     [
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 0,
+        "tilesetId": 1,
+        "tileId": 15
+      }
+    ],
+    [
+      {
+        "tilesetId": 1,
+        "tileId": 0
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 1
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 2
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 3
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 4
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 5
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 6
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 7
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 8
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 9
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 10
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 11
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 12
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 13
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 14
+      },
+      {
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
@@ -134,925 +200,859 @@
     ],
     [
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 2,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 3,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 4,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 5,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 6,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 7,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 8,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 9,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 10,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 11,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 12,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 13,
+        "tilesetId": 1,
         "tileId": 15
       }
     ],
     [
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 0
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 1
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 2
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 3
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 4
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 5
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 6
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 7
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 8
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 9
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 10
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 11
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 12
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 13
       },
       {
-        "tilesetId": 14,
+        "tilesetId": 1,
         "tileId": 14
       },
       {
-        "tilesetId": 14,
-        "tileId": 15
-      }
-    ],
-    [
-      {
-        "tilesetId": 15,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 1
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 2
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 3
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 4
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 5
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 6
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 7
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 8
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 9
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 10
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 11
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 12
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 13
-      },
-      {
-        "tilesetId": 15,
-        "tileId": 14
-      },
-      {
-        "tilesetId": 15,
+        "tilesetId": 1,
         "tileId": 15
       }
     ]

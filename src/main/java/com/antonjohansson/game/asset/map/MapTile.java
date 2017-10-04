@@ -5,18 +5,18 @@ package com.antonjohansson.game.asset.map;
  */
 public class MapTile
 {
-    private final int tilesetId;
+    private final TileSet tileset;
     private final int tileId;
 
-    MapTile(int tilesetId, int tileId)
+    MapTile(TileSet tileset, int tileId)
     {
-        this.tilesetId = tilesetId;
+        this.tileset = tileset;
         this.tileId = tileId;
     }
 
-    public int getTilesetId()
+    public TileSet getTileset()
     {
-        return tilesetId;
+        return tileset;
     }
 
     public int getTileId()
