@@ -3,8 +3,10 @@ package com.antonjohansson.game.world;
 import org.lwjgl.opengl.GL11;
 
 import com.antonjohansson.game.asset.IAssetManager;
+import com.antonjohansson.game.asset.map.MapConstants;
 import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartIdentifier;
+import com.antonjohansson.game.asset.map.MapTile;
 import com.antonjohansson.game.asset.map.TileSet;
 import com.antonjohansson.game.time.IGameTime;
 
@@ -54,15 +56,33 @@ public class World
     {
         tileset.getTexture().bind();
 
-        GL11.glBegin(GL11.GL_QUADS);
-        GL11.glTexCoord2f(0.0F, 1.0F);
-        GL11.glVertex2f(0.0F, 600.0F);
-        GL11.glTexCoord2f(1.0F, 1.0F);
-        GL11.glVertex2f(800.0F, 600.0F);
-        GL11.glTexCoord2f(1.0F, 0.0F);
-        GL11.glVertex2f(800.0F, 0.0F);
-        GL11.glTexCoord2f(0.0F, 0.0F);
-        GL11.glVertex2f(0.0F, 0.0F);
-        GL11.glEnd();
+        for (int y = 0; y < MapConstants.VERTICAL_TILES_PER_PART; y++)
+        {
+            for (int x = 0; x < MapConstants.HORIZONTAL_TILES_PER_PART; x++)
+            {
+                MapTile tile = mapPart.getTile(x, y);
+
+                float texLeft = tile.getTextureCoordinateLeft();
+                float texRight = tile.getTextureCoordinateRight();
+                float texBottom = tile.getTextureCoordinateBottom();
+                float texTop = tile.getTextureCoordinateTop();
+
+                float left = x * 16.0F;
+                float right = x * 16.0F + 16.0F;
+                float bottom = y * 16.0F;
+                float top = y * 16.0F + 16.0F;
+
+                GL11.glBegin(GL11.GL_QUADS);
+                GL11.glTexCoord2f(texLeft, texTop);
+                GL11.glVertex2f(left, top);
+                GL11.glTexCoord2f(texRight, texTop);
+                GL11.glVertex2f(right, top);
+                GL11.glTexCoord2f(texRight, texBottom);
+                GL11.glVertex2f(right, bottom);
+                GL11.glTexCoord2f(texLeft, texBottom);
+                GL11.glVertex2f(left, bottom);
+                GL11.glEnd();
+            }
+        }
     }
 }

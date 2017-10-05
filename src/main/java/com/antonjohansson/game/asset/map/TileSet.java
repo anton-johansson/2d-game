@@ -27,4 +27,14 @@ public class TileSet implements IAsset
     {
         return texture;
     }
+
+    public int getNumberOfTilesWide()
+    {
+        return texture.getWidth() / 16;
+    }
+
+    public int getNumberOfTilesHigh()
+    {
+        return texture.getHeight() / 16;
+    }
 }

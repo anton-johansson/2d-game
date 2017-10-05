@@ -3,10 +3,6 @@
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -64,15 +60,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -130,15 +126,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -196,15 +192,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -262,15 +258,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -328,15 +324,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -394,15 +390,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -460,15 +456,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -526,15 +522,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -592,15 +588,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -658,15 +654,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -724,15 +720,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -790,15 +786,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -856,15 +852,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -922,15 +918,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -988,15 +984,15 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ],
     [
       {
         "tilesetId": 1,
-        "tileId": 0
-      },
-      {
-        "tilesetId": 1,
         "tileId": 1
       },
       {
@@ -1054,6 +1050,10 @@
       {
         "tilesetId": 1,
         "tileId": 15
+      },
+      {
+        "tilesetId": 1,
+        "tileId": 16
       }
     ]
   ]

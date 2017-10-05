@@ -73,7 +73,7 @@ public class AssetManager implements IAssetManagerController
             {
                 MapDataTile tile = new MapDataTile();
                 tile.setTilesetId(1);
-                tile.setTileId(y);
+                tile.setTileId(y + 1);
                 tiles[x][y] = tile;
             }
         }
