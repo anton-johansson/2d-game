@@ -7,7 +7,7 @@ public class ConfigurationLoader
 {
     private static final int HEIGHT = 600;
     private static final int WIDTH = 800;
-    private static final int FRAME_CAP = 5;
+    private static final int DEFAULT_FRAME_CAP = 5;
 
     /**
      * Loads the configuration.
@@ -18,7 +18,20 @@ public class ConfigurationLoader
         configuration.getGraphics().setWidth(WIDTH);
         configuration.getGraphics().setHeight(HEIGHT);
         configuration.getGraphics().setVerticalSyncEnabled(false);
-        configuration.getGraphics().setFrameCap(FRAME_CAP);
+        configuration.getGraphics().setFrameCap(getFrameCap());
         return configuration;
+    }
+
+    private int getFrameCap()
+    {
+        String value = System.getProperty("frameCap");
+        try
+        {
+            return Integer.parseInt(value);
+        }
+        catch (Exception e)
+        {
+            return DEFAULT_FRAME_CAP;
+        }
     }
 }
