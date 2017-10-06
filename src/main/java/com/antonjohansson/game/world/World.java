@@ -3,6 +3,7 @@ package com.antonjohansson.game.world;
 import org.lwjgl.opengl.GL11;
 
 import com.antonjohansson.game.asset.IAssetManager;
+import com.antonjohansson.game.asset.input.InputManager;
 import com.antonjohansson.game.asset.map.MapConstants;
 import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartIdentifier;
@@ -15,6 +16,7 @@ import com.antonjohansson.game.time.IGameTime;
  */
 public class World
 {
+    private final Player player = new Player();
     private TileSet tileset;
     private MapPart mapPart;
 
@@ -44,9 +46,11 @@ public class World
      * Updates the world.
      *
      * @param gameTime The current game time.
+     * @param inputManager The input manager.
      */
-    public void update(IGameTime gameTime)
+    public void update(IGameTime gameTime, InputManager inputManager)
     {
+        player.update(gameTime, inputManager);
     }
 
     /**
@@ -67,10 +71,10 @@ public class World
                 float texBottom = tile.getTextureCoordinateBottom();
                 float texTop = tile.getTextureCoordinateTop();
 
-                float left = x * 16.0F;
-                float right = x * 16.0F + 16.0F;
-                float bottom = y * 16.0F;
-                float top = y * 16.0F + 16.0F;
+                float left = x * 16.0F + player.getX() * 1000F;
+                float right = x * 16.0F + 16.0F + player.getX() * 1000F;
+                float bottom = y * 16.0F + player.getY() * 1000F;
+                float top = y * 16.0F + 16.0F + player.getY() * 1000F;
 
                 GL11.glBegin(GL11.GL_QUADS);
                 GL11.glTexCoord2f(texLeft, texTop);

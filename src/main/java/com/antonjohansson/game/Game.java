@@ -13,6 +13,7 @@ import org.lwjgl.system.MemoryUtil;
 
 import com.antonjohansson.game.asset.AssetManager;
 import com.antonjohansson.game.asset.IAssetManagerController;
+import com.antonjohansson.game.asset.input.InputManager;
 import com.antonjohansson.game.config.Configuration;
 import com.antonjohansson.game.time.GameTime;
 import com.antonjohansson.game.world.World;
@@ -25,6 +26,7 @@ public class Game
     private final Configuration configuration;
     private final GameTime gameTime;
     private final IAssetManagerController assetManager;
+    private final InputManager inputManager;
     private final World world;
     private long window;
 
@@ -33,6 +35,7 @@ public class Game
         this.configuration = configuration;
         this.gameTime = new GameTime(configuration);
         this.assetManager = new AssetManager();
+        this.inputManager = new InputManager();
         this.world = new World();
     }
 
@@ -98,6 +101,7 @@ public class Game
         GL11.glEnable(GL11.GL_TEXTURE_2D);
         GL11.glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
         assetManager.initialize();
+        inputManager.setWindow(window);
         world.initialize(assetManager);
         gameTime.initialize();
 
@@ -111,7 +115,7 @@ public class Game
             GL11.glClear(GL11.GL_COLOR_BUFFER_BIT);
 
             gameTime.update();
-            world.update(gameTime);
+            world.update(gameTime, inputManager);
             world.render();
             gameTime.restrainIfNecessary();
 
