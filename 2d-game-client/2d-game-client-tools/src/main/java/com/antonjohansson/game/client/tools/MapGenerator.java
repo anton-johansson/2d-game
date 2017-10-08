@@ -1,16 +1,16 @@
 package com.antonjohansson.game.client.tools;
 
-import static com.antonjohansson.game.asset.map.MapPartLoader.FORMAT;
-import static com.antonjohansson.game.common.Constants.HORIZONTAL_TILES_PER_PART;
-import static com.antonjohansson.game.common.Constants.VERTICAL_TILES_PER_PART;
+import static com.antonjohansson.game.client.app.asset.map.MapPartLoader.FORMAT;
+import static com.antonjohansson.game.client.app.common.Constants.HORIZONTAL_TILES_PER_PART;
+import static com.antonjohansson.game.client.app.common.Constants.VERTICAL_TILES_PER_PART;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 
-import com.antonjohansson.game.asset.map.MapPartLoader;
-import com.antonjohansson.game.asset.map.raw.MapData;
-import com.antonjohansson.game.asset.map.raw.MapDataTile;
+import com.antonjohansson.game.client.app.asset.map.MapPartLoader;
+import com.antonjohansson.game.client.app.asset.map.raw.MapData;
+import com.antonjohansson.game.client.app.asset.map.raw.MapDataTile;
 
 /**
  * Generates a dummy map.
