@@ -1,7 +1,7 @@
 package com.antonjohansson.game.asset.map;
 
-import static com.antonjohansson.game.asset.map.MapConstants.HORIZONTAL_TILES_PER_PART;
-import static com.antonjohansson.game.asset.map.MapConstants.VERTICAL_TILES_PER_PART;
+import static com.antonjohansson.game.common.Constants.HORIZONTAL_TILES_PER_PART;
+import static com.antonjohansson.game.common.Constants.VERTICAL_TILES_PER_PART;
 
 import java.io.File;
 import java.io.FileReader;

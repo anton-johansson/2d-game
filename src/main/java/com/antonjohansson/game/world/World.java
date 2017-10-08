@@ -1,10 +1,13 @@
 package com.antonjohansson.game.world;
 
+import static com.antonjohansson.game.common.Constants.HORIZONTAL_TILES_PER_PART;
+import static com.antonjohansson.game.common.Constants.TILE_SIZE;
+import static com.antonjohansson.game.common.Constants.VERTICAL_TILES_PER_PART;
+
 import org.lwjgl.opengl.GL11;
 
 import com.antonjohansson.game.asset.IAssetManager;
 import com.antonjohansson.game.asset.input.InputManager;
-import com.antonjohansson.game.asset.map.MapConstants;
 import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartIdentifier;
 import com.antonjohansson.game.asset.map.MapTile;
@@ -60,9 +63,9 @@ public class World
     {
         tileset.getTexture().bind();
 
-        for (int y = 0; y < MapConstants.VERTICAL_TILES_PER_PART; y++)
+        for (int y = 0; y < VERTICAL_TILES_PER_PART; y++)
         {
-            for (int x = 0; x < MapConstants.HORIZONTAL_TILES_PER_PART; x++)
+            for (int x = 0; x < HORIZONTAL_TILES_PER_PART; x++)
             {
                 MapTile tile = mapPart.getTile(x, y);
 
@@ -71,10 +74,10 @@ public class World
                 float texBottom = tile.getTextureCoordinateBottom();
                 float texTop = tile.getTextureCoordinateTop();
 
-                float left = x * 16.0F + player.getX() * 1000F;
-                float right = x * 16.0F + 16.0F + player.getX() * 1000F;
-                float bottom = y * 16.0F + player.getY() * 1000F;
-                float top = y * 16.0F + 16.0F + player.getY() * 1000F;
+                float left = x * TILE_SIZE + player.getX() * 1000F;
+                float right = x * TILE_SIZE + TILE_SIZE + player.getX() * 1000F;
+                float bottom = y * TILE_SIZE + player.getY() * 1000F;
+                float top = y * TILE_SIZE + TILE_SIZE + player.getY() * 1000F;
 
                 GL11.glBegin(GL11.GL_QUADS);
                 GL11.glTexCoord2f(texLeft, texTop);
