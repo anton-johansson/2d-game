@@ -1,11 +1,6 @@
 package com.antonjohansson.game.asset;
 
-import static com.antonjohansson.game.common.Constants.HORIZONTAL_TILES_PER_PART;
-import static com.antonjohansson.game.common.Constants.VERTICAL_TILES_PER_PART;
-
 import java.io.File;
-import java.io.FileWriter;
-import java.io.Writer;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,8 +10,6 @@ import com.antonjohansson.game.asset.map.MapPart;
 import com.antonjohansson.game.asset.map.MapPartLoader;
 import com.antonjohansson.game.asset.map.TileSet;
 import com.antonjohansson.game.asset.map.TilesetLoader;
-import com.antonjohansson.game.asset.map.raw.MapData;
-import com.antonjohansson.game.asset.map.raw.MapDataTile;
 import com.antonjohansson.game.asset.texture.Texture;
 import com.antonjohansson.game.asset.texture.TextureLoader;
 
@@ -44,8 +37,6 @@ public class AssetManager implements IAssetManagerController
             throw new RuntimeException("The given asset location is invalid");
         }
         loaders.values().forEach(loader -> loader.setAssetLocation(assetLocation));
-
-        //dummy(assetLocation);
     }
 
     @Override
@@ -61,38 +52,6 @@ public class AssetManager implements IAssetManagerController
             }
         }
         storages.clear();
-    }
-
-    @SuppressWarnings("unused")
-    private void dummy(String assetLocation)
-    {
-        MapDataTile[][] tiles = new MapDataTile[HORIZONTAL_TILES_PER_PART][VERTICAL_TILES_PER_PART];
-        for (int x = 0; x < HORIZONTAL_TILES_PER_PART; x++)
-        {
-            for (int y = 0; y < VERTICAL_TILES_PER_PART; y++)
-            {
-                MapDataTile tile = new MapDataTile();
-                tile.setTilesetId(1);
-                tile.setTileId(y + 1);
-                tiles[x][y] = tile;
-            }
-        }
-
-        MapData data = new MapData();
-        data.setTiles(tiles);
-
-        String json = MapPartLoader.MAPPER.toJson(data);
-        System.out.println(json);
-
-        try (Writer writer = new FileWriter(assetLocation + "maps/+00050.-00050.map"))
-        {
-            writer.write(json);
-            writer.flush();
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
     }
 
     private boolean isValid(String assetLocation)

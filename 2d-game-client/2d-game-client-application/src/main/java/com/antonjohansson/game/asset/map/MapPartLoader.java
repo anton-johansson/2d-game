@@ -20,11 +20,11 @@ import com.google.gson.GsonBuilder;
  */
 public class MapPartLoader implements IAssetLoader<MapPart, MapPartIdentifier>
 {
+    public static final DecimalFormat FORMAT = format();
     public static final Gson MAPPER = new GsonBuilder()
             .setPrettyPrinting()
             .create();
     private static final int MINIMUM_INTEGER_DIGITS = 5;
-    private static final DecimalFormat FORMAT = format();
 
     private static DecimalFormat format()
     {
