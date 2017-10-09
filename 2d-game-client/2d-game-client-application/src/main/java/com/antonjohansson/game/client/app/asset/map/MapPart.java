@@ -33,4 +33,14 @@ public class MapPart implements IAsset
     {
         return tiles[x][y];
     }
+
+    public int getX()
+    {
+        return identifier.getX();
+    }
+
+    public int getY()
+    {
+        return identifier.getY();
+    }
 }

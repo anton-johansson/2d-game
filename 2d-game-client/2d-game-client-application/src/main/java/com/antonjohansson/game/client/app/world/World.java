@@ -1,17 +1,11 @@
 package com.antonjohansson.game.client.app.world;
 
-import static com.antonjohansson.game.client.app.common.Constants.HORIZONTAL_TILES_PER_PART;
-import static com.antonjohansson.game.client.app.common.Constants.TILE_SIZE;
-import static com.antonjohansson.game.client.app.common.Constants.VERTICAL_TILES_PER_PART;
-
-import org.lwjgl.opengl.GL11;
-
 import com.antonjohansson.game.client.app.asset.IAssetManager;
 import com.antonjohansson.game.client.app.asset.input.InputManager;
 import com.antonjohansson.game.client.app.asset.map.MapPart;
 import com.antonjohansson.game.client.app.asset.map.MapPartIdentifier;
-import com.antonjohansson.game.client.app.asset.map.MapTile;
 import com.antonjohansson.game.client.app.asset.map.TileSet;
+import com.antonjohansson.game.client.app.config.Configuration;
 import com.antonjohansson.game.client.app.time.IGameTime;
 
 /**
@@ -20,8 +14,14 @@ import com.antonjohansson.game.client.app.time.IGameTime;
 public class World
 {
     private final Player player = new Player();
+    private final MapManager mapManager;
     private TileSet tileset;
     private MapPart mapPart;
+
+    public World(IAssetManager assetManager, Configuration configuration)
+    {
+        mapManager = new MapManager(assetManager, configuration, player);
+    }
 
     /**
      * Initializes the world.
@@ -32,6 +32,7 @@ public class World
     {
         tileset = assetManager.subscribe(TileSet.class, 1);
         mapPart = assetManager.subscribe(MapPart.class, MapPartIdentifier.of(50, -50));
+        mapManager.initialize();
     }
 
     /**
@@ -43,6 +44,7 @@ public class World
     {
         assetManager.unsubscribe(tileset);
         assetManager.unsubscribe(mapPart);
+        mapManager.dispose();
     }
 
     /**
@@ -61,35 +63,6 @@ public class World
      */
     public void render()
     {
-        tileset.getTexture().bind();
-
-        for (int y = 0; y < VERTICAL_TILES_PER_PART; y++)
-        {
-            for (int x = 0; x < HORIZONTAL_TILES_PER_PART; x++)
-            {
-                MapTile tile = mapPart.getTile(x, y);
-
-                float texLeft = tile.getTextureCoordinateLeft();
-                float texRight = tile.getTextureCoordinateRight();
-                float texBottom = tile.getTextureCoordinateBottom();
-                float texTop = tile.getTextureCoordinateTop();
-
-                float left = x * TILE_SIZE + player.getX() * 1000F;
-                float right = x * TILE_SIZE + TILE_SIZE + player.getX() * 1000F;
-                float bottom = y * TILE_SIZE + player.getY() * 1000F;
-                float top = y * TILE_SIZE + TILE_SIZE + player.getY() * 1000F;
-
-                GL11.glBegin(GL11.GL_QUADS);
-                GL11.glTexCoord2f(texLeft, texTop);
-                GL11.glVertex2f(left, top);
-                GL11.glTexCoord2f(texRight, texTop);
-                GL11.glVertex2f(right, top);
-                GL11.glTexCoord2f(texRight, texBottom);
-                GL11.glVertex2f(right, bottom);
-                GL11.glTexCoord2f(texLeft, texBottom);
-                GL11.glVertex2f(left, bottom);
-                GL11.glEnd();
-            }
-        }
+        mapManager.render();
     }
 }

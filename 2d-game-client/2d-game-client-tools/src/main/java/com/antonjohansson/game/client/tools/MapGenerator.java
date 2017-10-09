@@ -20,9 +20,17 @@ public class MapGenerator
     /** Entry-point. */
     public static void main(String[] args)
     {
-        final int mapX = 50;
-        final int mapY = -50;
+        for (int y = -3; y <= 3; y++)
+        {
+            for (int x = -3; x <= 3; x++)
+            {
+                generate(x, y);
+            }
+        }
+    }
 
+    private static void generate(int mapX, int mapY)
+    {
         MapDataTile[][] tiles = new MapDataTile[HORIZONTAL_TILES_PER_PART][VERTICAL_TILES_PER_PART];
         for (int x = 0; x < HORIZONTAL_TILES_PER_PART; x++)
         {
@@ -39,7 +47,7 @@ public class MapGenerator
         data.setTiles(tiles);
 
         String json = MapPartLoader.MAPPER.toJson(data);
-        System.out.println(json);
+//        System.out.println(json);
 
         String fileName = FORMAT.format(mapX) + "." + FORMAT.format(mapY) + ".map";
         try (Writer writer = new FileWriter(getAssetLocation() + "maps/" + fileName))

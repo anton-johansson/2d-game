@@ -54,8 +54,8 @@ public class Player
             deltaY += 1.0F;
         }
 
-        deltaX = deltaX * gameTime.getDelta() * 0.1F;
-        deltaY = deltaY * gameTime.getDelta() * 0.1F;
+        deltaX = deltaX * gameTime.getDelta();
+        deltaY = deltaY * gameTime.getDelta();
 
         x += deltaX;
         y += deltaY;

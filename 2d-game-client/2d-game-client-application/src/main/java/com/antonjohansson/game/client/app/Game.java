@@ -36,7 +36,7 @@ public class Game
         this.gameTime = new GameTime(configuration);
         this.assetManager = new AssetManager();
         this.inputManager = new InputManager();
-        this.world = new World();
+        this.world = new World(assetManager, configuration);
     }
 
     /**

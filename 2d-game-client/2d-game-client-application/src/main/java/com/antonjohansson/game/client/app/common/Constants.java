@@ -23,6 +23,12 @@ public final class Constants
     /** The number of tiles vertically per map part. */
     public static final int VERTICAL_TILES_PER_PART = (int) (VERTICAL_METERS_PER_MAP_PART / METERS_PER_TILE);
 
+    /** The width of a whole map part in pixels. */
+    public static final int MAP_PART_WIDTH_IN_PIXELS = HORIZONTAL_TILES_PER_PART * TILE_SIZE;
+
+    /** The height of a whole map part in pixels. */
+    public static final int MAP_PART_HEIGHT_IN_PIXELS = VERTICAL_TILES_PER_PART * TILE_SIZE;
+
     // Prevent instantiation
     private Constants()
     {
