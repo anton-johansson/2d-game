@@ -93,7 +93,7 @@ public class MapManager
         int partBottom = part.getY() * MAP_PART_HEIGHT_IN_PIXELS;
         int partTop = part.getY() * MAP_PART_HEIGHT_IN_PIXELS + MAP_PART_HEIGHT_IN_PIXELS;
 
-        if (isOutOfBounds(partLeft, partRight, partBottom, partTop))
+        if (!isInBounds(partLeft, partRight, partBottom, partTop))
         {
             return;
         }
@@ -121,7 +121,7 @@ public class MapManager
                 int bottom = partY + y * TILE_SIZE + screenDeltaY;
                 int top = partY + y * TILE_SIZE + TILE_SIZE + screenDeltaY;
 
-                if (isOutOfBounds(left, right, bottom, top))
+                if (!isInBounds(left, right, bottom, top))
                 {
                     continue;
                 }
@@ -138,12 +138,12 @@ public class MapManager
         }
     }
 
-    private boolean isOutOfBounds(int left, int right, int bottom, int top)
+    private boolean isInBounds(int left, int right, int bottom, int top)
     {
-        return left > configuration.getGraphics().getWidth()
-            || right < 0.0F
-            || bottom > configuration.getGraphics().getHeight()
-            || top < 0.0F;
+        return left <= configuration.getGraphics().getWidth()
+            && right >= 0.0F
+            && bottom <= configuration.getGraphics().getHeight()
+            && top >= 0.0F;
     }
 
     /** The players absolute X-coordinate in pixels. */
