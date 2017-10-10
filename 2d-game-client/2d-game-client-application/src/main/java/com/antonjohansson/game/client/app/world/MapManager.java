@@ -88,14 +88,21 @@ public class MapManager
 
     private void renderPart(MapPart part)
     {
-        int screenDeltaX = configuration.getGraphics().getWidth() / 2;
-        int screenDeltaY = configuration.getGraphics().getHeight() / 2;
+        int partLeft = part.getX() * MAP_PART_WIDTH_IN_PIXELS;
+        int partRight = part.getX() * MAP_PART_WIDTH_IN_PIXELS + MAP_PART_WIDTH_IN_PIXELS;
+        int partBottom = part.getY() * MAP_PART_HEIGHT_IN_PIXELS;
+        int partTop = part.getY() * MAP_PART_HEIGHT_IN_PIXELS + MAP_PART_HEIGHT_IN_PIXELS;
 
-        int playerX = (int) (player.getX() / Constants.METERS_PER_TILE * Constants.TILE_SIZE);
-        int playerY = (int) (player.getY() / Constants.METERS_PER_TILE * Constants.TILE_SIZE);
+        if (isOutOfBounds(partLeft, partRight, partBottom, partTop))
+        {
+            return;
+        }
 
-        int screenPartX = part.getX() * MAP_PART_WIDTH_IN_PIXELS - playerX - screenDeltaX;
-        int screenPartY = part.getY() * MAP_PART_HEIGHT_IN_PIXELS - playerY - screenDeltaY;
+        int partX = partLeft - playerX();
+        int partY = partBottom - playerY();
+
+        int screenDeltaX = screenDeltaX();
+        int screenDeltaY = screenDeltaY();
 
         for (int y = 0; y < VERTICAL_TILES_PER_PART; y++)
         {
@@ -109,10 +116,15 @@ public class MapManager
                 float texBottom = tile.getTextureCoordinateBottom();
                 float texTop = tile.getTextureCoordinateTop();
 
-                int left = screenPartX + x * TILE_SIZE + screenDeltaX;
-                int right = screenPartX + x * TILE_SIZE + screenDeltaX + TILE_SIZE;
-                int bottom = screenPartY + y * TILE_SIZE + screenDeltaY;
-                int top = screenPartY + y * TILE_SIZE + screenDeltaY + TILE_SIZE;
+                int left = partX + x * TILE_SIZE + screenDeltaX;
+                int right = partX + x * TILE_SIZE + TILE_SIZE + screenDeltaX;
+                int bottom = partY + y * TILE_SIZE + screenDeltaY;
+                int top = partY + y * TILE_SIZE + TILE_SIZE + screenDeltaY;
+
+                if (isOutOfBounds(left, right, bottom, top))
+                {
+                    continue;
+                }
 
                 GL11.glTexCoord2f(texLeft, texTop);
                 GL11.glVertex2f(left, top);
@@ -124,6 +136,36 @@ public class MapManager
                 GL11.glVertex2f(left, bottom);
             }
         }
+    }
+
+    private boolean isOutOfBounds(int left, int right, int bottom, int top)
+    {
+        return left > configuration.getGraphics().getWidth()
+            || right < 0.0F
+            || bottom > configuration.getGraphics().getHeight()
+            || top < 0.0F;
+    }
+
+    /** The players absolute X-coordinate in pixels. */
+    private int playerX()
+    {
+        return (int) (player.getX() / Constants.METERS_PER_TILE * Constants.TILE_SIZE);
+    }
+
+    /** The players absolute Y-coordinate in pixels. */
+    private int playerY()
+    {
+        return (int) (player.getY() / Constants.METERS_PER_TILE * Constants.TILE_SIZE);
+    }
+
+    private int screenDeltaX()
+    {
+        return configuration.getGraphics().getWidth() / 2;
+    }
+
+    private int screenDeltaY()
+    {
+        return configuration.getGraphics().getHeight() / 2;
     }
 
     /**
