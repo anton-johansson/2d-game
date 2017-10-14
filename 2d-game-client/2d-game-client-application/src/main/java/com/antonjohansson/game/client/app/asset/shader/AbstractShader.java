@@ -16,8 +16,7 @@ abstract class AbstractShader implements IAsset
         this.name = name;
     }
 
-    // TODO: reduce to package privacy
-    public int getHandle()
+    int getHandle()
     {
         return handle;
     }

@@ -14,6 +14,8 @@ import com.antonjohansson.game.client.app.asset.map.TileSet;
 import com.antonjohansson.game.client.app.asset.map.TilesetLoader;
 import com.antonjohansson.game.client.app.asset.shader.FragmentShader;
 import com.antonjohansson.game.client.app.asset.shader.FragmentShaderLoader;
+import com.antonjohansson.game.client.app.asset.shader.ShaderProgram;
+import com.antonjohansson.game.client.app.asset.shader.ShaderProgramLoader;
 import com.antonjohansson.game.client.app.asset.shader.VertexShader;
 import com.antonjohansson.game.client.app.asset.shader.VertexShaderLoader;
 import com.antonjohansson.game.client.app.asset.texture.Texture;
@@ -34,6 +36,7 @@ public class AssetManager implements IAssetManagerController
         loaders.put(TileSet.class, new TilesetLoader());
         loaders.put(VertexShader.class, new VertexShaderLoader());
         loaders.put(FragmentShader.class, new FragmentShaderLoader());
+        loaders.put(ShaderProgram.class, new ShaderProgramLoader());
     }
 
     @Override
