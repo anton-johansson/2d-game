@@ -1,5 +1,7 @@
 package com.antonjohansson.game.client.app.asset;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,6 +12,10 @@ import com.antonjohansson.game.client.app.asset.map.MapPart;
 import com.antonjohansson.game.client.app.asset.map.MapPartLoader;
 import com.antonjohansson.game.client.app.asset.map.TileSet;
 import com.antonjohansson.game.client.app.asset.map.TilesetLoader;
+import com.antonjohansson.game.client.app.asset.shader.FragmentShader;
+import com.antonjohansson.game.client.app.asset.shader.FragmentShaderLoader;
+import com.antonjohansson.game.client.app.asset.shader.VertexShader;
+import com.antonjohansson.game.client.app.asset.shader.VertexShaderLoader;
 import com.antonjohansson.game.client.app.asset.texture.Texture;
 import com.antonjohansson.game.client.app.asset.texture.TextureLoader;
 
@@ -26,6 +32,8 @@ public class AssetManager implements IAssetManagerController
         loaders.put(MapPart.class, new MapPartLoader());
         loaders.put(Texture.class, new TextureLoader());
         loaders.put(TileSet.class, new TilesetLoader());
+        loaders.put(VertexShader.class, new VertexShaderLoader());
+        loaders.put(FragmentShader.class, new FragmentShaderLoader());
     }
 
     @Override
@@ -74,7 +82,7 @@ public class AssetManager implements IAssetManagerController
             holder.subscribe();
             return holder.getAsset();
         }
-        IAssetLoader<A, Object> loader = loader(type);
+        IAssetLoader<A, Object> loader = requireNonNull(loader(type), "No asset loader found for type '" + type.getSimpleName() + "'");
         if (identifier.getClass() != loader.getIdentifierType())
         {
             throw new RuntimeException("Cannot load assets of type '" + type.getSimpleName() + "' cannot be loaded using a '" + identifier.getClass().getSimpleName() + "'");
