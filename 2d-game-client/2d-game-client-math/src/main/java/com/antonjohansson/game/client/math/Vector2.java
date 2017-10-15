@@ -78,8 +78,8 @@ public class Vector2
      */
     public Vector2 negate()
     {
-        y *= -1;
-        x *= -1;
+        x = -x;
+        y = -y;
         return this;
     }
 }
