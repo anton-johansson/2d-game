@@ -7,7 +7,9 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -67,7 +69,14 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
                 throw new RuntimeException("Could not validate program: " + GL20.glGetProgramInfoLog(handle));
             }
 
-            return new ShaderProgram(name, handle, vertexShader, fragmentShader);
+            Map<String, Integer> parameterHandles = new HashMap<>();
+            for (String parameter : data.getParameters())
+            {
+                int parameterHandle = GL20.glGetUniformLocation(handle, parameter);
+                parameterHandles.put(parameter, parameterHandle);
+            }
+
+            return new ShaderProgram(name, handle, parameterHandles, vertexShader, fragmentShader);
         }
         catch (IOException e)
         {
@@ -92,6 +101,7 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
     {
         private String vertexShader = "";
         private String fragmentShader = "";
+        private List<String> parameters = emptyList();
         private List<ShaderProgramAttribute> attributes = emptyList();
 
         public String getVertexShader()
@@ -112,6 +122,16 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
         public void setFragmentShader(String fragmentShader)
         {
             this.fragmentShader = fragmentShader;
+        }
+
+        public List<String> getParameters()
+        {
+            return parameters;
+        }
+
+        public void setParameters(List<String> parameters)
+        {
+            this.parameters = parameters;
         }
 
         public List<ShaderProgramAttribute> getAttributes()
