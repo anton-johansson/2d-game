@@ -7,6 +7,12 @@ import java.nio.FloatBuffer;
  */
 public class Vector2
 {
+    /** The number of floats contained in this vector. */
+    public static final int NUMBER_OF_FLOATS = 2;
+
+    /** The size in bytes of an instance of this type. */
+    public static final int SIZE_IN_BYTES = 4 * NUMBER_OF_FLOATS;
+
     /** Defines the vector at origin (0, 0). */
     public static final Vector2 ZERO = new UnmodifiableVector2(0.0F, 0.0F);
 
