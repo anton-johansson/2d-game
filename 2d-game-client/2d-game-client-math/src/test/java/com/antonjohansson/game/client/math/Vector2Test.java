@@ -1,5 +1,7 @@
 package com.antonjohansson.game.client.math;
 
+import static com.antonjohansson.game.client.math.Vector2.NUMBER_OF_FLOATS;
+
 import java.nio.FloatBuffer;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -62,7 +64,7 @@ public class Vector2Test extends Assert
         Vector2 vector1 = new Vector2(60.29F, 54.91F);
         Vector2 vector2 = new Vector2(-9.35F, 2.85F);
 
-        FloatBuffer buffer = FloatBuffer.allocate(4);
+        FloatBuffer buffer = FloatBuffer.allocate(NUMBER_OF_FLOATS * 2);
         vector1.feed(buffer);
         vector2.feed(buffer);
         buffer.rewind();
