@@ -1,14 +1,16 @@
 package com.antonjohansson.game.client.app.asset.shader;
 
 import static com.antonjohansson.game.client.app.asset.map.MapPartLoader.MAPPER;
+import static java.util.Collections.emptyList;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.List;
 
-import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 import com.antonjohansson.game.client.app.asset.IAssetLoader;
 import com.antonjohansson.game.client.app.asset.IAssetManager;
@@ -44,20 +46,25 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
             VertexShader vertexShader = manager.subscribe(VertexShader.class, data.getVertexShader());
             FragmentShader fragmentShader = manager.subscribe(FragmentShader.class, data.getFragmentShader());
 
-            int handle = ARBShaderObjects.glCreateProgramObjectARB();
-            ARBShaderObjects.glAttachObjectARB(handle, vertexShader.getHandle());
-            ARBShaderObjects.glAttachObjectARB(handle, fragmentShader.getHandle());
+            int handle = GL20.glCreateProgram();
+            GL20.glAttachShader(handle, vertexShader.getHandle());
+            GL20.glAttachShader(handle, fragmentShader.getHandle());
 
-            ARBShaderObjects.glLinkProgramARB(handle);
-            if (ARBShaderObjects.glGetObjectParameteriARB(handle, ARBShaderObjects.GL_OBJECT_LINK_STATUS_ARB) == GL11.GL_FALSE)
+            for (ShaderProgramAttribute attribute : data.getAttributes())
             {
-                throw new RuntimeException("could not link program: " + getLogInfo(handle));
+                GL20.glBindAttribLocation(handle, attribute.getIndex(), attribute.getName());
             }
 
-            ARBShaderObjects.glValidateProgramARB(handle);
-            if (ARBShaderObjects.glGetObjectParameteriARB(handle, ARBShaderObjects.GL_OBJECT_VALIDATE_STATUS_ARB) == GL11.GL_FALSE)
+            GL20.glLinkProgram(handle);
+            if (GL20.glGetProgrami(handle, GL20.GL_LINK_STATUS) == GL11.GL_FALSE)
             {
-                throw new RuntimeException("could not validate program: " + getLogInfo(handle));
+                throw new RuntimeException("Could not link program: " + GL20.glGetProgramInfoLog(handle));
+            }
+
+            GL20.glValidateProgram(handle);
+            if (GL20.glGetProgrami(handle, GL20.GL_VALIDATE_STATUS) == GL11.GL_FALSE)
+            {
+                throw new RuntimeException("Could not validate program: " + GL20.glGetProgramInfoLog(handle));
             }
 
             return new ShaderProgram(name, handle, vertexShader, fragmentShader);
@@ -71,14 +78,11 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
     @Override
     public void dispose(ShaderProgram asset, IAssetManager manager)
     {
+        GL20.glDetachShader(asset.getHandle(), asset.getFragmentShader().getHandle());
+        GL20.glDetachShader(asset.getHandle(), asset.getVertexShader().getHandle());
         manager.unsubscribe(asset.getFragmentShader());
         manager.unsubscribe(asset.getVertexShader());
-        ARBShaderObjects.glDeleteObjectARB(asset.getHandle());
-    }
-
-    private String getLogInfo(int obj)
-    {
-        return ARBShaderObjects.glGetInfoLogARB(obj, ARBShaderObjects.glGetObjectParameteriARB(obj, ARBShaderObjects.GL_OBJECT_INFO_LOG_LENGTH_ARB));
+        GL20.glDeleteProgram(asset.getHandle());
     }
 
     /**
@@ -88,6 +92,7 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
     {
         private String vertexShader = "";
         private String fragmentShader = "";
+        private List<ShaderProgramAttribute> attributes = emptyList();
 
         public String getVertexShader()
         {
@@ -107,6 +112,45 @@ public class ShaderProgramLoader implements IAssetLoader<ShaderProgram, String>
         public void setFragmentShader(String fragmentShader)
         {
             this.fragmentShader = fragmentShader;
+        }
+
+        public List<ShaderProgramAttribute> getAttributes()
+        {
+            return attributes;
+        }
+
+        public void setAttributes(List<ShaderProgramAttribute> attributes)
+        {
+            this.attributes = attributes;
+        }
+    }
+
+    /**
+     * Defines attribute locations for the shader program.
+     */
+    static final class ShaderProgramAttribute
+    {
+        private int index;
+        private String name = "";
+
+        public int getIndex()
+        {
+            return index;
+        }
+
+        public void setIndex(int index)
+        {
+            this.index = index;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public void setName(String name)
+        {
+            this.name = name;
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.antonjohansson.game.client.app.asset.shader;
 
-import org.lwjgl.opengl.ARBShaderObjects;
+import org.lwjgl.opengl.GL20;
 
 import com.antonjohansson.game.client.app.asset.common.IAsset;
 
@@ -48,7 +48,7 @@ public class ShaderProgram implements IAsset
      */
     public void use()
     {
-        ARBShaderObjects.glUseProgramObjectARB(handle);
+        GL20.glUseProgram(handle);
     }
 
     /**
@@ -56,6 +56,6 @@ public class ShaderProgram implements IAsset
      */
     public void end()
     {
-        ARBShaderObjects.glUseProgramObjectARB(0);
+        GL20.glUseProgram(0);
     }
 }

@@ -6,8 +6,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.function.BiFunction;
 
-import org.lwjgl.opengl.ARBShaderObjects;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL20;
 
 import com.antonjohansson.game.client.app.asset.IAssetLoader;
 import com.antonjohansson.game.client.app.asset.IAssetManager;
@@ -49,12 +49,12 @@ abstract class AbstractShaderLoader<S extends AbstractShader> implements IAssetL
         String fileName = shaderLocation + identifier + extension;
         File file = new File(fileName);
         String shaderSource = getShaderSource(file);
-        int handle = ARBShaderObjects.glCreateShaderObjectARB(shaderType);
-        ARBShaderObjects.glShaderSourceARB(handle, shaderSource);
-        ARBShaderObjects.glCompileShaderARB(handle);
-        if (ARBShaderObjects.glGetObjectParameteriARB(handle, ARBShaderObjects.GL_OBJECT_COMPILE_STATUS_ARB) == GL11.GL_FALSE)
+        int handle = GL20.glCreateShader(shaderType);
+        GL20.glShaderSource(handle, shaderSource);
+        GL20.glCompileShader(handle);
+        if (GL20.glGetShaderi(handle, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE)
         {
-            throw new RuntimeException("Could not compile shader with name '" + identifier + "': " + getLogInfo(handle));
+            throw new RuntimeException("Could not compile shader with name '" + identifier + "': " + GL20.glGetShaderInfoLog(handle));
         }
         return constructor.apply(handle, identifier);
     }
@@ -71,14 +71,9 @@ abstract class AbstractShaderLoader<S extends AbstractShader> implements IAssetL
         }
     }
 
-    private String getLogInfo(int obj)
-    {
-        return ARBShaderObjects.glGetInfoLogARB(obj, ARBShaderObjects.glGetObjectParameteriARB(obj, ARBShaderObjects.GL_OBJECT_INFO_LOG_LENGTH_ARB));
-    }
-
     @Override
     public final void dispose(S asset, IAssetManager manager)
     {
-        ARBShaderObjects.glDeleteObjectARB(asset.getHandle());
+        GL20.glDeleteShader(asset.getHandle());
     }
 }
