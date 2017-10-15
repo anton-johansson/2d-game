@@ -15,6 +15,7 @@
     <modules>
         <module>2d-game-client-application</module>
         <module>2d-game-client-tools</module>
+        <module>2d-game-client-math</module>
     </modules>
 
 </project>
