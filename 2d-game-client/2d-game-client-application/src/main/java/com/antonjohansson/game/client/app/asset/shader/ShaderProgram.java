@@ -1,6 +1,5 @@
 package com.antonjohansson.game.client.app.asset.shader;
 
-import static com.antonjohansson.game.client.math.Matrix4.NUMBER_OF_FLOATS;
 import static java.util.Objects.requireNonNull;
 import static org.lwjgl.BufferUtils.createFloatBuffer;
 
@@ -59,6 +58,11 @@ public class ShaderProgram implements IAsset
      */
     public void use()
     {
+        if (inUse)
+        {
+            throw new IllegalStateException("The shader is already in use");
+        }
+
         GL20.glUseProgram(handle);
         inUse = true;
     }
@@ -72,7 +76,7 @@ public class ShaderProgram implements IAsset
     public void setMatrix(String parameterName, Matrix4 value)
     {
         checkThatShaderIsInUse();
-        FloatBuffer buffer = createFloatBuffer(NUMBER_OF_FLOATS);
+        FloatBuffer buffer = createFloatBuffer(Matrix4.NUMBER_OF_FLOATS);
         value.feed(buffer);
         buffer.flip();
         setMatrix(parameterName, buffer);
@@ -86,6 +90,11 @@ public class ShaderProgram implements IAsset
      */
     public void setMatrix(String parameterName, FloatBuffer value)
     {
+        if (value.capacity() != Matrix4.NUMBER_OF_FLOATS)
+        {
+            throw new IllegalArgumentException("The input buffer must have a capacity of " + Matrix4.NUMBER_OF_FLOATS);
+        }
+
         checkThatShaderIsInUse();
         int parameterHandle = requireNonNull(parameterHandles.get(parameterName), "No parameter with name '" + parameterName + "' was found");
         GL20.glUniformMatrix4fv(parameterHandle, false, value);
@@ -95,7 +104,7 @@ public class ShaderProgram implements IAsset
     {
         if (!inUse)
         {
-            throw new IllegalStateException("The shader is not in use, and can therefor not have parameters set");
+            throw new IllegalStateException("The shader is not in use");
         }
     }
 
@@ -104,6 +113,7 @@ public class ShaderProgram implements IAsset
      */
     public void end()
     {
+        checkThatShaderIsInUse();
         GL20.glUseProgram(0);
         inUse = false;
     }
