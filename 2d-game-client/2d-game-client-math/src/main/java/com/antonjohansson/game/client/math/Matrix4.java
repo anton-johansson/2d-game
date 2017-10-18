@@ -6,7 +6,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
- * Defines a four times four for sized matrix.
+ * Defines a four times four sized matrix.
  */
 public class Matrix4
 {
