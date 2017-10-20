@@ -7,6 +7,7 @@ import static com.antonjohansson.game.client.app.common.Constants.VERTICAL_TILES
 import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
+import java.util.Random;
 
 import com.antonjohansson.game.client.app.asset.map.MapPartLoader;
 import com.antonjohansson.game.client.app.asset.map.raw.MapData;
@@ -38,7 +39,7 @@ public class MapGenerator
             {
                 MapDataTile tile = new MapDataTile();
                 tile.setTilesetId(1);
-                tile.setTileId(y + 1);
+                tile.setTileId(new Random().nextInt(50) + 1);
                 tiles[x][y] = tile;
             }
         }

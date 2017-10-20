@@ -10,8 +10,8 @@ import com.antonjohansson.game.client.math.Vector2;
 public class TexturedVertex implements IVertex
 {
     // Vertex data
-    private Vector2 position = Vector2.ZERO;
-    private Vector2 textureCoordinate = Vector2.ZERO;
+    private Vector2 position = new Vector2();
+    private Vector2 textureCoordinate = new Vector2();
 
     private static final int POSITION_NUMBER_OF_FLOATS = Vector2.NUMBER_OF_FLOATS;
     private static final int TEXTURECOORDINATE_NUMBER_OF_FLOATS = Vector2.NUMBER_OF_FLOATS;
@@ -46,7 +46,7 @@ public class TexturedVertex implements IVertex
      * @param positionX The X-coordinate of the position of the vertex.
      * @param positionY The Y-coordinate of the position of the vertex.
      * @param textureCoordinateX The X-coordinate of the texture coordinate of the vertex.
-     * @param textureCoordinateX The Y-coordinate of the texture coordinate of the vertex.
+     * @param textureCoordinateY The Y-coordinate of the texture coordinate of the vertex.
      */
     public TexturedVertex(float positionX, float positionY, float textureCoordinateX, float textureCoordinateY)
     {
@@ -71,6 +71,22 @@ public class TexturedVertex implements IVertex
     public void setTextureCoordinate(Vector2 textureCoordinate)
     {
         this.textureCoordinate = textureCoordinate;
+    }
+
+    /**
+     * Sets the data of the vertex.
+     *
+     * @param positionX The X-coordinate of the position of the vertex.
+     * @param positionY The Y-coordinate of the position of the vertex.
+     * @param textureCoordinateX The X-coordinate of the texture coordinate of the vertex.
+     * @param textureCoordinateY The Y-coordinate of the texture coordinate of the vertex.
+     */
+    public void setValues(float positionX, float positionY, float textureCoordinateX, float textureCoordinateY)
+    {
+        position.setX(positionX);
+        position.setY(positionY);
+        textureCoordinate.setX(textureCoordinateX);
+        textureCoordinate.setY(textureCoordinateY);
     }
 
     @Override

@@ -1,0 +1,17 @@
+{
+  "vertexShader": "map",
+  "fragmentShader": "map",
+  "parameters": [
+    "param_projection"
+  ],
+  "attributes": [
+    {
+      "index": 0,
+      "name": "in_Position"
+    },
+    {
+      "index": 1,
+      "name": "in_TextureCoordinate"
+    }
+  ]
+}
