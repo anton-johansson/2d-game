@@ -1,5 +1,8 @@
 package com.antonjohansson.game.client.app.rendering;
 
+import static com.antonjohansson.game.client.app.rendering.FrequencyHint.STATIC;
+import static com.antonjohansson.game.client.app.rendering.StorageHint.WRITE;
+import static java.util.Objects.requireNonNull;
 import static org.lwjgl.BufferUtils.createIntBuffer;
 
 import java.nio.FloatBuffer;
@@ -15,8 +18,11 @@ import org.lwjgl.opengl.GL30;
  * Defines a graphic buffer, containing all required elements of rendering buffers.
  * <p>
  * To create a new buffer and utilize it:
+ *
  * <pre>
- * GraphicBuffer<TexturedVertex> buffer = GraphicBuffer.of(TexturedVertex.class);
+ * GraphicBuffer<TexturedVertex> buffer = GraphicBuffer.of(TexturedVertex.class)
+ *         .withVertexDataHints(WRITE, STREAM)
+ *         .withIndexDataHints(WRITE, DYNAMIC);
  * buffer.setVertexData(...);
  * buffer.setIndexData(...);
  * buffer.draw();
@@ -32,6 +38,8 @@ public class GraphicBuffer<V extends IVertex>
     private final int vertexBufferId;
     private final int indexBufferId;
     private final int numberOfVertexAttributes;
+    private int vertexDataUsage = STATIC.forStorage(WRITE);
+    private int indexDataUsage = STATIC.forStorage(WRITE);
     private int numberOfIndices;
 
     private GraphicBuffer(int numberOfFloatsPerVertex, int vertexArrayId, int vertexBufferId, int indexBufferId, int numberOfVertexAttributes)
@@ -91,6 +99,36 @@ public class GraphicBuffer<V extends IVertex>
     }
 
     /**
+     * Gives hints to the graphics library about the vertex buffer data.
+     *
+     * @param frequency A hint about the frequency of user updates.
+     * @param storage A hint about how the data is stored.
+     * @return Returns the buffer itself, used for chaining.
+     */
+    public GraphicBuffer<V> withVertexDataHints(FrequencyHint frequency, StorageHint storage)
+    {
+        requireNonNull(frequency, "The given 'frequency' cannot be null");
+        requireNonNull(storage, "The given 'storage' cannot be null");
+        vertexDataUsage = frequency.forStorage(storage);
+        return this;
+    }
+
+    /**
+     * Gives hints to the graphics library about the index buffer data.
+     *
+     * @param frequency A hint about the frequency of user updates.
+     * @param storage A hint about how the data is stored.
+     * @return Returns the buffer itself, used for chaining.
+     */
+    public GraphicBuffer<V> withIndexDataHints(FrequencyHint frequency, StorageHint storage)
+    {
+        requireNonNull(frequency, "The given 'frequency' cannot be null");
+        requireNonNull(storage, "The given 'storage' cannot be null");
+        indexDataUsage = frequency.forStorage(storage);
+        return this;
+    }
+
+    /**
      * Sets the vertex data and uploads it into the vertex buffer stored in the GPU memory.
      *
      * @param vertices The vertices to upload.
@@ -106,7 +144,7 @@ public class GraphicBuffer<V extends IVertex>
 
         GL30.glBindVertexArray(vertexArrayId);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, vertexBufferId);
-        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
+        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, buffer, vertexDataUsage);
         GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, 0);
         GL30.glBindVertexArray(0);
     }
@@ -129,7 +167,7 @@ public class GraphicBuffer<V extends IVertex>
         buffer.flip();
 
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, indexBufferId);
-        GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, buffer, GL15.GL_STATIC_DRAW);
+        GL15.glBufferData(GL15.GL_ELEMENT_ARRAY_BUFFER, buffer, indexDataUsage);
         GL15.glBindBuffer(GL15.GL_ELEMENT_ARRAY_BUFFER, 0);
     }
 

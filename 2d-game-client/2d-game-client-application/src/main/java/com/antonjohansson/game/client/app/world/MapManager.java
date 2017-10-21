@@ -6,6 +6,9 @@ import static com.antonjohansson.game.client.app.common.Constants.METERS_PER_TIL
 import static com.antonjohansson.game.client.app.common.Constants.TILE_SIZE;
 import static com.antonjohansson.game.client.app.common.Constants.VERTICAL_METERS_PER_MAP_PART;
 import static com.antonjohansson.game.client.app.common.Constants.VERTICAL_TILES_PER_PART;
+import static com.antonjohansson.game.client.app.rendering.FrequencyHint.STATIC;
+import static com.antonjohansson.game.client.app.rendering.FrequencyHint.STREAM;
+import static com.antonjohansson.game.client.app.rendering.StorageHint.WRITE;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -120,7 +123,10 @@ public class MapManager
             }
         }
 
-        buffer = GraphicBuffer.of(TexturedVertex.class);
+        buffer = GraphicBuffer.of(TexturedVertex.class)
+                .withVertexDataHints(STREAM, WRITE)
+                .withIndexDataHints(STATIC, WRITE);
+
         buffer.setIndexData(indices);
     }
 
