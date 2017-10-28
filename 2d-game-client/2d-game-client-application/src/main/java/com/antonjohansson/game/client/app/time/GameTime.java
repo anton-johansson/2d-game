@@ -53,13 +53,6 @@ public class GameTime implements IGameTime
             updatesPerSecondTime -= 1.0F;
             updatesPerSecond = updatesPerSecondCounter;
             updatesPerSecondCounter = 1;
-
-            String message = "Updates per second: " + updatesPerSecond;
-            if (frameCap().isPresent())
-            {
-                message += " (requested: " + frameCap().getAsInt() + ")";
-            }
-            System.out.println(message);
         }
         else
         {

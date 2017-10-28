@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.antonjohansson.game.client.app.asset.common.IAsset;
+import com.antonjohansson.game.client.app.asset.font.Font;
+import com.antonjohansson.game.client.app.asset.font.FontLoader;
 import com.antonjohansson.game.client.app.asset.map.MapPart;
 import com.antonjohansson.game.client.app.asset.map.MapPartLoader;
 import com.antonjohansson.game.client.app.asset.map.TileSet;
@@ -31,12 +33,13 @@ public class AssetManager implements IAssetManagerController
 
     public AssetManager()
     {
+        loaders.put(Font.class, new FontLoader());
+        loaders.put(FragmentShader.class, new FragmentShaderLoader());
         loaders.put(MapPart.class, new MapPartLoader());
+        loaders.put(ShaderProgram.class, new ShaderProgramLoader());
         loaders.put(Texture.class, new TextureLoader());
         loaders.put(TileSet.class, new TilesetLoader());
         loaders.put(VertexShader.class, new VertexShaderLoader());
-        loaders.put(FragmentShader.class, new FragmentShaderLoader());
-        loaders.put(ShaderProgram.class, new ShaderProgramLoader());
     }
 
     @Override

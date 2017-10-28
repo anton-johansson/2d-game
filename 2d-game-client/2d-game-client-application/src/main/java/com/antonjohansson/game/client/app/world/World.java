@@ -1,6 +1,8 @@
 package com.antonjohansson.game.client.app.world;
 
 import com.antonjohansson.game.client.app.asset.IAssetManager;
+import com.antonjohansson.game.client.app.asset.font.Font;
+import com.antonjohansson.game.client.app.asset.font.FontKey;
 import com.antonjohansson.game.client.app.asset.input.InputManager;
 import com.antonjohansson.game.client.app.asset.map.MapPart;
 import com.antonjohansson.game.client.app.asset.map.MapPartIdentifier;
@@ -17,6 +19,8 @@ public class World
     private final MapManager mapManager;
     private TileSet tileset;
     private MapPart mapPart;
+    private Font font;
+    private int fps;
 
     public World(IAssetManager assetManager, Configuration configuration)
     {
@@ -32,6 +36,7 @@ public class World
     {
         tileset = assetManager.subscribe(TileSet.class, 1);
         mapPart = assetManager.subscribe(MapPart.class, MapPartIdentifier.of(50, -50));
+        font = assetManager.subscribe(Font.class, FontKey.of("ubuntu-regular", 24));
         mapManager.initialize();
     }
 
@@ -44,6 +49,7 @@ public class World
     {
         assetManager.unsubscribe(tileset);
         assetManager.unsubscribe(mapPart);
+        assetManager.unsubscribe(font);
         mapManager.dispose();
     }
 
@@ -55,6 +61,7 @@ public class World
      */
     public void update(IGameTime gameTime, InputManager inputManager)
     {
+        fps = gameTime.getUpdatesPerSecond();
         player.update(gameTime, inputManager);
     }
 
@@ -64,5 +71,6 @@ public class World
     public void render()
     {
         mapManager.render();
+        font.print("FPS: " + fps, 5.0F, 8.0F);
     }
 }
